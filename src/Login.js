@@ -3,7 +3,7 @@ import { signInWithGoogle } from './Firebase';
 
 function Login() {
     return (
-        <button onClick={signInWithGoogle}>Sign in with Google</button>
+        <div id='my-signin2' onClick={signInWithGoogle}></div>
     )
 }
 
