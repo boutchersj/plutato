@@ -3,9 +3,6 @@ import firebase from "firebase/compat/app";
 import 'firebase/compat/auth';
 import 'firebase/compat/database';
 import { getFirestore } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
-
-const navigate = useNavigate();
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -45,7 +42,6 @@ export { firebase };
 export const logOut = () => {
     auth.signOut().then(()=> {
         console.log('logged out')
-        navigate('/');
     }).catch((error) => {
         console.log(error.message)
     })
