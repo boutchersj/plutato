@@ -1,9 +1,9 @@
-import Card from './Card';
+import Login from './Login';
 
 function App() {
   return (
-    <div className="text-center bg-yellow-500">
-      <Card />
+    <div className="text-center">
+      <Login />
     </div>
   );
 }
