@@ -15,8 +15,9 @@ function Home() {
             })
     }
     return (
-        <div id='home'>
-            <button onClick={logout}>Logout</button>
+        <div id='home' className="flex bg-purple-400 h-[100vh]">
+            <h1 className="font-bold text-2xl ml-auto">Plutato</h1>
+            <button className="border border-white rounded-lg bg-red-500 font-semibold text-white h-12 w-24 ml-auto" onClick={logout}>Logout</button>
         </div>
     )
 }
