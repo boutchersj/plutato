@@ -1,8 +1,9 @@
 import React from 'react';
+import { signInWithGoogle } from './Firebase';
 
 function Card() {
     return (
-        <h1 className="text-blue-700">I'm a card!</h1>
+        <button onClick={signInWithGoogle} className="text-blue-700">I'm a card!</button>
     )
 }
 
