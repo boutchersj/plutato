@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth";
 
 const provider = new GoogleAuthProvider();
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,12 +39,20 @@ export const signInWithGoogle = () => signInWithPopup(auth, provider)
     localStorage.setItem("profilePic", profilePic);
 
   }).catch((error) => {
-    // Handle Errors here.
     const errorCode = error.code;
     const errorMessage = error.message;
     // // The email of the user's account used.
     // const email = error.customData.email;
     // // The AuthCredential type that was used.
     // const credential = GoogleAuthProvider.credentialFromError(error);
+    console.error(`${errorCode}:\n${errorMessage}`);
+  });
+
+export const signOutOfGoogle = () => signOut(auth)
+  .then(() => {
+    // Sign-out successful.
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
     console.error(`${errorCode}:\n${errorMessage}`);
   });
