@@ -5,6 +5,8 @@ import 'firebase/compat/database';
 import { getFirestore } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
+const navigate = useNavigate();
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -41,7 +43,6 @@ export const signInWithGoogle = () => {
 export { firebase };
 
 export const logOut = () => {
-    const navigate = useNavigate();
     auth.signOut().then(()=> {
         console.log('logged out')
         navigate('/');
