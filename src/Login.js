@@ -10,7 +10,7 @@ function Login() {
     useEffect((prevUser) => {
         if (user) {
             addUser(user)
-            navigate('/card')
+            navigate('/home')
         }
     }, [user, navigate])
     return (
