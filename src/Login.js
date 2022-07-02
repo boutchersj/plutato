@@ -4,6 +4,7 @@ import { UserContext } from './providers/UserProvider';
 import { useNavigate } from 'react-router-dom';
 import { GoogleButton } from 'react-google-button';
 import { addUser } from './backend';
+
 function Login() {
     const user = useContext(UserContext);
     const navigate = useNavigate();

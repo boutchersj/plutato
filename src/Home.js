@@ -1,17 +1,22 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { logOut } from './Firebase';
+import { auth } from './Firebase';
 
 function Home() {
     const navigate = useNavigate();
     const logout = () => {
-        logout();
-        navigate('/');
+        auth.signOut()
+            .then(()=> {
+                console.log('logged out');
+                navigate('/');
+            })
+            .catch((error) => {
+                console.error(error.message);
+            })
     }
     return (
         <div id='home'>
-            <h1>Plutato</h1>
-            <button onClick={logOut}>Logout</button>
+            <button onClick={logout}>Logout</button>
         </div>
     )
 }

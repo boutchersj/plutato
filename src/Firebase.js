@@ -38,11 +38,3 @@ export const signInWithGoogle = () => {
 };
 
 export { firebase };
-
-export const logOut = () => {
-    auth.signOut().then(()=> {
-        console.log('logged out')
-    }).catch((error) => {
-        console.log(error.message)
-    })
-};
