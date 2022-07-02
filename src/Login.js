@@ -1,9 +1,10 @@
 import React from 'react';
 import { signInWithGoogle } from './Firebase';
+import { GoogleButton } from 'react-google-button';
 
 function Login() {
     return (
-        <div id='my-signin2' onClick={signInWithGoogle}></div>
+        <GoogleButton onClick={signInWithGoogle} />
     )
 }
 
