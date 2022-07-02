@@ -50,7 +50,9 @@ export const signInWithGoogle = () => signInWithPopup(auth, provider)
 
 export const signOutOfGoogle = () => signOut(auth)
   .then(() => {
-    // Sign-out successful.
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("profilePic");
   }).catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
