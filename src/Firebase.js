@@ -1,8 +1,10 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import firebase from "firebase/compat/app";
+import 'firebase/compat/auth';
+import 'firebase/compate/database';
+import { getFirestore } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
-const provider = new GoogleAuthProvider();
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -11,6 +13,7 @@ const provider = new GoogleAuthProvider();
 const firebaseConfig = {
   apiKey: "AIzaSyBM0Bt5TnDQed94f6gJRikwRdkesMWZ3aY",
   authDomain: "plutato-1e930.firebaseapp.com",
+  databaseURL: "https://plutato-1e930-default-rtdb.firebaseio.com/",
   projectId: "plutato-1e930",
   storageBucket: "plutato-1e930.appspot.com",
   messagingSenderId: "958325980115",
@@ -19,31 +22,30 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
+// Initialize Firestore
+export const db = getFirestore(app);
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth();
-export const signInWithGoogle = () => signInWithPopup(auth, provider)
-  .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    // const credential = GoogleAuthProvider.credentialFromResult(result);
-    // const token = credential.accessToken;
-    // // The signed-in user info.
-    // const user = result.user;
-    const name = result.user.displayName;
-    const email = result.user.email;
-    const profilePic = result.user.photoURL;
+export const auth = firebase.auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+export const signInWithGoogle = () => {
+    auth.signInWithPopup(googleProvider).then((res) => {
+        console.log(res.user);
+    }).catch((error) => {
+        console.log(error.message)
+    })
+};
 
-    localStorage.setItem("name", name);
-    localStorage.setItem("email", email);
-    localStorage.setItem("profilePic", profilePic);
+export { firebase };
 
-  }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // // The email of the user's account used.
-    // const email = error.customData.email;
-    // // The AuthCredential type that was used.
-    // const credential = GoogleAuthProvider.credentialFromError(error);
-    console.error(`${errorCode}:\n${errorMessage}`);
-  });
+export const logOut = () => {
+    const navigate = useNavigate();
+    auth.signOut().then(()=> {
+        console.log('logged out')
+        navigate('/');
+    }).catch((error) => {
+        console.log(error.message)
+    })
+};
