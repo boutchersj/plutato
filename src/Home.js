@@ -2,9 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from './Firebase';
 
-const navigate = useNavigate();
-
 function Home() {
+    const navigate = useNavigate();
     const logout = () => {
         logout();
         navigate('/');
