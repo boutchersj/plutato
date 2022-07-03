@@ -1,7 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from './Firebase';
-import Flashcard from './Flashcard';
+import Flashcards from './Flashcards';
+
+import './plutils';
 
 function Home() {
     const navigate = useNavigate();
@@ -22,7 +24,7 @@ function Home() {
                 <button className="border border-white rounded-lg bg-red-500 font-semibold text-white h-12 w-24 ml-auto" onClick={logout}>Logout</button>
             </header>
             <section className="flex justify-center items-center h-[50%]">
-                <Flashcard />
+                <Flashcards deck={byUnitsMisc} />
             </section>
         </div>
     )
