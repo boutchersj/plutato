@@ -1,0 +1,11 @@
+{
+    "parserOptions": {
+        "requireConfigFile": false,
+        "babelOptons": {
+        "plugins": [
+            "@babel/plugin-syntax-import-assertions"
+        ]
+        }
+    },
+    "parser": "@babel/eslint-parser"
+}

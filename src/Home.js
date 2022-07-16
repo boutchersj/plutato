@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { auth } from './Firebase';
 import Flashcards from './Flashcards';
 
-import './plutils';
-
 function Home() {
     const navigate = useNavigate();
     const logout = () => {
@@ -17,14 +15,15 @@ function Home() {
                 console.error(error.message);
             })
     }
+
     return (
-        <div id='home' className="flex-col bg-purple-400 h-[100vh]">
-            <header className="flex items-center bg-white">
-                <h1 className="font-bold text-2xl ml-auto">Plutato</h1>
+        <div id='home' className="flex-col h-full">
+            <header className="flex items-center">
+                <h1 className="font-bold text-4xl ml-auto">Plutato</h1>
                 <button className="border border-white rounded-lg bg-red-500 font-semibold text-white h-12 w-24 ml-auto" onClick={logout}>Logout</button>
             </header>
-            <section className="flex justify-center items-center h-[50%]">
-                <Flashcards deck={byUnitsMisc} />
+            <section className="flex justify-center items-center h-full p-10">
+                <Flashcards deck="units-misc" />
             </section>
         </div>
     )
