@@ -8,7 +8,7 @@ function Flashcards(props) {
     }
     let cards = [];
 
-    if (props.deck == 'units-misc') {
+    if (props.deck === 'units-misc') {
         const cardsData = byUnitsMisc()
         const names = cardsData[0];
         const codes = cardsData[1];
