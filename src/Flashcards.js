@@ -1,11 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
+import Flashcard from './Flashcard';
 import { byUnitsMisc } from './plutils';
 
 function Flashcards(props) {
-    const [side,setSide] = useState(true)
-    const flipCard = () => {
-        setSide(!side);
-    }
     let cards = [];
 
     if (props.deck === 'units-misc') {
@@ -17,9 +14,7 @@ function Flashcards(props) {
             const nameSide = names[i];
             const codeSide = codes[i];
             cards.push(
-                <div className="flex justify-center items-center p-16 text-xl border border-black w-48 h-48" onClick={flipCard}>
-                    <p>{side ? nameSide : codeSide}</p>
-                </div>
+                <Flashcard nameSide={nameSide} codeSide={codeSide} />
             )
         }
 
