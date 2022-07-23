@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from './Firebase';
-import { byUnitsMisc, byWeightMisc } from './plutils';
+import * as plutils from './plutils';
 import Flashcard from './Flashcard';
-import Flashcards from './Flashcards';
+import GridView from './GridView';
 
 function Home() {
+    const [currentDeck, setCurrentDeck] = useState(plutils.byWeightMisc);
+    const [currentGame, setCurrentGame] = useState('grid');
+
     const navigate = useNavigate();
+
     const logout = () => {
         auth.signOut()
             .then(()=> {
@@ -18,12 +22,11 @@ function Home() {
             })
     }
 
-    const buildDeck = (deck) => {
+    const buildDeck = (deckData) => {
         let cards = [];
 
-        const cardsData = deck()
-        const names = cardsData[0];
-        const codes = cardsData[1];
+        const names = deckData[0];
+        const codes = deckData[1];
 
         for (let i in names) {
             const nameSide = names[i];
@@ -35,16 +38,39 @@ function Home() {
 
         return cards;
     }
+    
+    const menuHeaderStyles = 'flex w-full bg-black text-white p-2 font-bold justify-center';
+
+    const deckButtonContainerStyles = 'flex w-full justify-evenly bg-orange-300 p-5';
+    const deckButtonStyles = 'border border-black border-2 p-2 mx-1 rounded-xl font-bold text-white bg-black';
+
+    const onChangeDeck = (e) => {
+        setCurrentDeck(plutils[e.target.value]);
+    }
+
+    const gameButtonContainerStyles = 'flex w-full justify-evenly bg-blue-300 p-5';
+    const gameButtonStyles = 'border border-black border-2 p-2 rounded-xl font-bold text-white bg-black';
+
+    const onChangeGame = (e) => {
+        setCurrentGame(e.target.value);
+    }
 
     return (
         <div id='home' className="flex-col h-full">
-            <header className="flex items-center bg-gray-300 p-5">
-                <h1 className="font-bold text-4xl ml-auto">Plutato</h1>
-                <button className="border border-white rounded-lg bg-red-500 font-semibold text-white h-12 w-24 ml-auto" onClick={logout}>Logout</button>
+            <header className="flex justify-center bg-gray-300 p-5">
+                <h1 className="font-bold text-4xl">Plutato</h1>
             </header>
-            <section className="flex justify-center items-center w-full h-full p-10 bg-emerald-400">
-                <Flashcards deck={buildDeck(byWeightMisc)} />
+            <h2 className={menuHeaderStyles}>Choose a Deck</h2>
+            <section className={deckButtonContainerStyles}>
+                <button onClick={onChangeDeck} value='byWeightMisc' className={deckButtonStyles}>By Weight - Miscellaneous</button>
+                <button onClick={onChangeDeck} value='byUnitsMisc' className={deckButtonStyles}>By Units - Miscellaneous</button>
             </section>
+            <h2 className={menuHeaderStyles}>Choose a Game</h2>
+            <section className={gameButtonContainerStyles}>
+                <button onClick={onChangeGame} value='grid' className={gameButtonStyles}>Grid</button>
+            </section>
+            {currentGame === 'grid' && <GridView deck={buildDeck(currentDeck)} />}
+            <button className="bg-red-500 font-semibold text-white p-3 w-full" onClick={logout}>Logout</button>
         </div>
     )
 }
