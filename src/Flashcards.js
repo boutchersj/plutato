@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 function Flashcards(props) {
-    const [currentCard, setCurrentCard] = useState({})
-
     return (
         <div className='p-5 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-5'>
             {props.deck}

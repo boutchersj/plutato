@@ -16,3 +16,21 @@ export const deckDataCurator = (pluCategory) => {
 
 export const byUnitsMisc = deckDataCurator(pluData.Units.Miscellaneous);
 export const byWeightMisc = deckDataCurator(pluData.Weight.Miscellaneous);
+export const melons = deckDataCurator(pluData.Units.Melons);
+export const oranges = deckDataCurator(pluData.Units.Oranges);
+export const bellPeppers = deckDataCurator(pluData.Units['Bell Peppers']);
+export const onionBags = deckDataCurator(pluData.Units['Onion Bags']);
+export const watermelon = deckDataCurator(pluData.Units.Watermelon);
+export const fallSeasonal = deckDataCurator(pluData.Units['Fall/Seasonal']);
+export const floral = deckDataCurator(pluData.Units.Floral);
+export const apples = deckDataCurator(pluData.Weight.Apples);
+export const beans = deckDataCurator(pluData.Weight.Beans);
+export const eggplant = deckDataCurator(pluData.Weight.Eggplant);
+export const grapes = deckDataCurator(pluData.Weight.Grapes);
+export const nuts = deckDataCurator(pluData.Weight.Nuts);
+export const onions = deckDataCurator(pluData.Weight.Onions);
+export const pears = deckDataCurator(pluData.Weight.Pears);
+export const smallHotPeppers = deckDataCurator(pluData.Weight['Small Hot Peppers']);
+export const roots = deckDataCurator(pluData.Weight.Roots);
+export const squash = deckDataCurator(pluData.Weight.Squash);
+export const tomatoes = deckDataCurator(pluData.Weight.Tomatoes);
