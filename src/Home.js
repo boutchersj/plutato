@@ -8,7 +8,7 @@ import Flashcard from './Flashcard';
 import GridView from './GridView';
 
 function Home() {
-    const [currentDeck, setCurrentDeck] = useState(plutils.byWeightMisc);
+    const [currentDeck, setCurrentDeck] = useState(plutils['miscellaneousOrganic']);
     const [currentGame, setCurrentGame] = useState('grid');
 
     const navigate = useNavigate();
