@@ -3,7 +3,7 @@ import DeckMenuButton from './DeckMenuButton';
 import * as plutils from './plutils';
 
 function DeckMenuButtons(props) {
-    const deckButtonContainerStyles = 'grid md:grid-cols-4 grid-cols-3 gap-1 w-full justify-evenly bg-orange-300 p-5';
+    const deckButtonContainerStyles = 'grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-1 w-full justify-evenly bg-orange-300 p-5';
     const pluDecks = Object.keys(plutils).filter(val => val !== 'deckDataCurator');
     const deckButtonsData = pluDecks.map(deck => {
         const deckStr = deck.slice(1);
