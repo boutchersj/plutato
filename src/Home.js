@@ -34,7 +34,11 @@ function Home() {
             const nameSide = names[i];
             const codeSide = codes[i];
             cards.push(
-                <Flashcard nameSide={nameSide} codeSide={codeSide} />
+                <Flashcard
+                    key={nameSide}
+                    nameSide={nameSide}
+                    codeSide={codeSide}
+                />
             )
         }
 
