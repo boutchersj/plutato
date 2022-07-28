@@ -9,7 +9,7 @@ function GameMenu(props) {
         <div>
             <h2 className={menuHeaderStyles}>Choose a Game</h2>
             <section className={gameButtonContainerStyles}>
-                <button onClick={props.onChangeGame} value='grid' className={gameButtonStyles}>Grid</button>
+                <button id='grid' onClick={props.onChangeGame} value='grid' className={gameButtonStyles}>Grid</button>
             </section>
         </div>
     )

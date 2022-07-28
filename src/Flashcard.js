@@ -8,7 +8,7 @@ function Flashcard(props) {
     const cardColor = side ? 'bg-black text-white' : 'bg-white text-black';
 
     return (
-        <button className={`${cardColor} flex justify-center items-center p-16 text-xl border border-black w-48 h-48`} onClick={flipCard}>
+        <button id={props.nameSide} className={`${cardColor} flex justify-center items-center p-16 text-xl border border-black w-48 h-48`} onClick={flipCard}>
             <p>{side ? props.nameSide : props.codeSide}</p>
         </button>
     );
