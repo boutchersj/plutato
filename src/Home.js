@@ -8,7 +8,7 @@ import Flashcard from './Flashcard';
 import GridView from './GridView';
 
 function Home() {
-    const [currentDeck, setCurrentDeck] = useState(plutils['miscellaneousOrganic']);
+    const [currentDeck, setCurrentDeck] = useState('miscellaneousOrganic');
     const [currentGame, setCurrentGame] = useState('grid');
 
     const navigate = useNavigate();
@@ -46,11 +46,15 @@ function Home() {
     }
 
     const onChangeDeck = (e) => {
-        setCurrentDeck(plutils[e.target.value]);
+        document.querySelector(`#${currentDeck}`).classList.remove('bg-white', 'text-black', 'border-white')
+        setCurrentDeck(e.target.value);
+        document.querySelector(`#${e.target.value}`).classList.add('bg-white', 'text-black', 'border-white')
     }
 
     const onChangeGame = (e) => {
+        document.querySelector(`#${currentGame}`).classList.remove('bg-white', 'text-black', 'border-white')
         setCurrentGame(e.target.value);
+        document.querySelector(`#${e.target.value}`).classList.add('bg-white', 'text-black', 'border-white')
     }
 
     return (
@@ -60,7 +64,7 @@ function Home() {
             </header>
             <DeckMenu onChangeDeck={onChangeDeck} />
             <GameMenu onChangeGame={onChangeGame} />
-            {currentGame === 'grid' && <GridView deck={buildDeck(currentDeck)} />}
+            {currentGame === 'grid' && <GridView deck={buildDeck(plutils[currentDeck])} />}
             <button className="bg-red-500 font-semibold text-white p-3 w-full" onClick={logout}>Logout</button>
         </div>
     )
