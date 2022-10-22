@@ -28,13 +28,6 @@ export const db = getFirestore(app);
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = firebase.auth();
-const googleProvider = new firebase.auth.GoogleAuthProvider();
-export const signInWithGoogle = () => {
-    auth.signInWithPopup(googleProvider).then((res) => {
-        console.log(res.user);
-    }).catch((error) => {
-        console.log(error.message)
-    })
-};
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export { firebase };
