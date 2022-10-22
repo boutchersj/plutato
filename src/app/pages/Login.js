@@ -1,12 +1,12 @@
 import React, { useEffect, useContext } from 'react';
-import { signInWithGoogle } from './Firebase';
-import { UserContext } from './providers/UserProvider';
+import { signInWithGoogle } from '../../backend/Firebase';
+import { AuthContext } from '../../backend/AuthProvider';
 import { useNavigate } from 'react-router-dom';
 import { GoogleButton } from 'react-google-button';
-import { addUser } from './backend';
+import { addUser } from '../../backend/backend';
 
 function Login() {
-    const user = useContext(UserContext);
+    const user = useContext(AuthContext);
     const navigate = useNavigate();
     useEffect((prevUser) => {
         if (user) {

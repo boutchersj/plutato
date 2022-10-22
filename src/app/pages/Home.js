@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from './Firebase';
-import * as plutils from './plutils';
-import DeckMenu from './DeckMenu';
-import GameMenu from './GameMenu';
-import Flashcard from './Flashcard';
-import GridView from './GridView';
+import { auth } from '../../backend/Firebase';
+import * as plutils from '../data/plutils';
+import DeckMenu from '../components/DeckMenu';
+import GameMenu from '../components/GameMenu';
+import Flashcard from '../components/Flashcard';
+import GridView from '../components/GridView';
 
 function Home() {
     const [currentDeck, setCurrentDeck] = useState('miscellaneousOrganic');

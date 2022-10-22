@@ -1,24 +1,15 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-    BrowserRouter,
-    Routes,
-    Route
-} from 'react-router-dom';
-import Home from './Home';
-import UserProvider from './providers/UserProvider';
-import Login from './Login';
-import './index.css';
+import { BrowserRouter } from 'react-router-dom';
+import AuthProvider from './backend/AuthProvider';
+import App from './app/App';
 
 createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-      <UserProvider>
-          <BrowserRouter>
-              <Routes>
-                  <Route path='/' element={<Login />} />
-                  <Route path='home' element={<Home />} />
-              </Routes>
-          </BrowserRouter>
-      </UserProvider>
-  </React.StrictMode>
+  <StrictMode>
+    <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+    </AuthProvider>
+  </StrictMode>
 );

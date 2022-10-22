@@ -1,6 +1,6 @@
 import React from 'react';
 import DeckMenuButton from './DeckMenuButton';
-import * as plutils from './plutils';
+import * as plutils from '../data/plutils';
 
 function DeckMenuButtons(props) {
     const deckButtonContainerStyles = 'grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-1 w-full justify-evenly bg-orange-300 p-5';
