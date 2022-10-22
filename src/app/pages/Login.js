@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { auth, googleProvider } from '../../backend/Firebase';
 import { GoogleButton } from 'react-google-button';
 import { addUser } from '../../backend/backend';
-import useAuthListener from '../../backend/useAuthListener';
-import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
+// import useAuthListener from '../../backend/useAuthListener';
+// import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    const user = useAuthListener()
-    const navigate = useNavigate();
+    // const user = useAuthListener()
+    // const navigate = useNavigate();
 
     
     const signInWithGoogle = () => {
@@ -19,7 +20,7 @@ function Login() {
         })
     };
 
-    // useEffect((prevUser) => {
+    // useEffect(() => {
     //     if (user) {
     //         console.log(user)
     //         navigate('/home')
