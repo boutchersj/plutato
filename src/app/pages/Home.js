@@ -17,7 +17,7 @@ function Home() {
         auth.signOut()
             .then(()=> {
                 console.log('logged out');
-                navigate('/');
+                navigate('/login');
             })
             .catch((error) => {
                 console.error(error.message);

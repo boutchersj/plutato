@@ -14,16 +14,17 @@ function App() {
         <UserContext.Provider value={user}>
             <BrowserRouter>
                 <Routes>
-                        <Route path='/' element={<Login />} />
-                        <Route
-                            path='/home'
-                            element={
-                                <PrivateRoute user={user}>
-                                    <Home />
-                                </PrivateRoute>
-                            }
-                        />
-                    </Routes>
+                    <Route
+                        exact
+                        path='/'
+                        element={
+                            <PrivateRoute user={user}>
+                                <Home />
+                            </PrivateRoute>
+                        }
+                    />
+                    <Route exact path='/login' element={<Login />} />
+                </Routes>
             </BrowserRouter>
         </UserContext.Provider>
     )
