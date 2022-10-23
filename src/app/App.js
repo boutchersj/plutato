@@ -4,21 +4,18 @@ import PrivateRoute from '../backend/PrivateRoute'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import './index.css';
-import UserContext from '../backend/UserContext'
-import useAuthListener from '../backend/useAuthListener'
+import { AuthProvider } from '../backend/Auth'
 
 function App() {
-    const { user } = useAuthListener()
-
     return (
-        <UserContext.Provider value={user}>
+        <AuthProvider>
             <BrowserRouter>
                 <Routes>
                     <Route
                         exact
                         path='/'
                         element={
-                            <PrivateRoute user={user}>
+                            <PrivateRoute>
                                 <Home />
                             </PrivateRoute>
                         }
@@ -26,7 +23,7 @@ function App() {
                     <Route exact path='/login' element={<Login />} />
                 </Routes>
             </BrowserRouter>
-        </UserContext.Provider>
+        </AuthProvider>
     )
 }
 
