@@ -8,11 +8,7 @@ import Flashcard from '../components/Flashcard';
 import GridView from '../components/GridView';
 
 function Home() {
-    const [currentDeck, setCurrentDeck] = useState('miscellaneousOrganic');
-    const [currentGame, setCurrentGame] = useState('grid');
-
     const navigate = useNavigate();
-
     const logout = () => {
         auth.signOut()
             .then(()=> {
@@ -23,6 +19,9 @@ function Home() {
                 console.error(error.message);
             })
     }
+
+    const [currentDeck, setCurrentDeck] = useState('miscellaneousOrganic');
+    const [currentGame, setCurrentGame] = useState('grid');
 
     const buildDeck = (deckData) => {
         let cards = [];
