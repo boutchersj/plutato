@@ -6,8 +6,11 @@ import DeckMenu from '../components/DeckMenu';
 import GameMenu from '../components/GameMenu';
 import Flashcard from '../components/Flashcard';
 import GridView from '../components/GridView';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import Loading from '../../backend/Loading'
 
 function Home() {
+    const { loading, error } = useAuthState(auth)
     const navigate = useNavigate();
     const logout = () => {
         auth.signOut()
@@ -54,6 +57,12 @@ function Home() {
         document.querySelector(`#${currentGame}`).classList.remove('bg-white', 'text-black', 'border-white')
         setCurrentGame(e.target.value);
         document.querySelector(`#${e.target.value}`).classList.add('bg-white', 'text-black', 'border-white')
+    }
+
+    if (loading) {
+        return (
+            <Loading />
+        )
     }
 
     return (
