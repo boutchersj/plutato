@@ -4,8 +4,7 @@ import { auth } from './Firebase';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [currentUser, setCurrentUser] = useState(null);
-
+    const [currentUser, setCurrentUser] = useState();
     useEffect(() => {
         auth.onAuthStateChanged(setCurrentUser)
     }, [])
