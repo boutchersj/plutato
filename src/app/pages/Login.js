@@ -7,7 +7,10 @@ import { AuthContext } from '../../backend/Auth';
 
 function Login() {
     const navigate = useNavigate()
-    const signInWithGoogle = (event) => {
+    const { currentUser } = useContext(AuthContext)
+    const loading = typeof currentUser === 'undefined'
+
+    function signInWithGoogle(event) {
         event.preventDefault()
         auth.signInWithPopup(googleProvider).then((res) => {
             addUser(res.user)
@@ -19,16 +22,14 @@ function Login() {
         })
     };
 
-    const { currentUser } = useContext(AuthContext)
-
-    return (
-        !!currentUser
-        ? <Navigate to='/' />
-        : (
-            <div className="flex justify-center items-center bg-green-700 h-[100vh]">
-                <GoogleButton onClick={signInWithGoogle} />
-            </div>
-        )
+    return loading ? (
+        <h1>Loading...</h1>
+    ): currentUser ? (
+        <Navigate to='/' />
+    ): (
+        <div className="flex justify-center items-center bg-green-700 h-[100vh]">
+            <GoogleButton onClick={signInWithGoogle} />
+        </div>
     )
 }
 
